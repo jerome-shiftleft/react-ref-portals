@@ -1,10 +1,14 @@
-export default function Input() {
-  // Todo: Accept forwarded ref and "connect" it to the <input> element
+import React from 'react';
+
+const Input = React.forwardRef((props, ref) => {
+  const { label, ...inputProps } = props;
+
   return (
     <p className="control">
-      <label>TODO: Output label (received via props)</label>
-      {/* Todo: "Forward" remaining props to <input> element */}
-      <input />
+      <label>{label}</label>
+      <input ref={ref} {...inputProps} />
     </p>
   );
-}
+});
+
+export default Input;
