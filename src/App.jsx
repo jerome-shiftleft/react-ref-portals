@@ -1,17 +1,26 @@
-import Player from './components/Player.jsx';
-import TimerChallenge from './components/TimerChallenge.jsx';
+import Input from './Input';
 
-function App() {
+export const userData = {
+  name: '',
+  email: '',
+};
+
+export function App() {
+  function handleSaveData() {
+    userData.name = 'TODO: Set to actual entered value';
+    userData.email = 'TODO: Set to actual entered value';
+
+    console.log(userData);
+  }
+
   return (
-    <>
-      <Player />
-      <div id="challenges">
-        <TimerChallenge title="Easy" targetTime={1} />
-        <TimerChallenge title="Not easy" targetTime={5} />
-        <TimerChallenge title="Getting tough" targetTime={10} />
-        <TimerChallenge title="Pros only" targetTime={15} />
-      </div>
-    </>
+    <div id="app">
+      <Input type="text" label="Your Name" />
+      <Input type="email" label="Your E-Mail" />
+      <p id="actions">
+        <button onClick={handleSaveData}>Save Data</button>
+      </p>
+    </div>
   );
 }
 
