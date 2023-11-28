@@ -1,30 +1,21 @@
 import React from 'react';
-import Input from './Input';
+import Form from './Form';
 
-export const userData = {
-  name: '',
-  email: '',
-};
+function App() {
+  const formRef = React.useRef();
 
-export default function App() {
-  const nameRef = React.useRef();
-  const emailRef = React.useRef();
-
-  function handleSaveData() {
-    userData.name = nameRef.current.value;
-    userData.email = emailRef.current.value;
-
-    console.log(userData);
+  function handleRestart() {
+    // Call the clear() method from the Form component
+    formRef.current.clear();
   }
 
   return (
     <div id="app">
-      <Input type="text" label="Your Name" ref={nameRef} />
-      <Input type="email" label="Your E-Mail" ref={emailRef} />
-      <p id="actions">
-        <button onClick={handleSaveData}>Save Data</button>
-      </p>
+      <button onClick={handleRestart}>Restart</button>
+      {/* Pass the ref to the Form component */}
+      <Form ref={formRef} />
     </div>
   );
 }
 
+export default App;
